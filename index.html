@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset=utf-8>
+  <title>Build a Course</title>
+
+  <link href="css/bootstrap.css" rel="stylesheet">
+  <!--<link href="css/bootstrap-responsive.css" rel="stylesheet">-->
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+
+  <!--NAV STUFF-->
+  <div class="navbar">
+    <div class="navbar-inner navbar-fixed-top">
+      <div class="container">
+        <ul class="nav">
+          <li>
+            <a href="./index.html">Overview</a>
+          </li>
+          <li>
+            <a href="#">View Courses</a>
+          </li>
+        </ul>
+        <a class="brand" href="./index.html">Course</a>
+      </div>
+    </div>
+  </div>
+  <!-- /NAV -->
+
+  <div class="container">
+    <header class="jumbotron subhead" id="overview">
+      <h1>New Course!</h1>
+        <p class="lead">
+          Design and edit an online course
+        </p>
+    </header>
+    <div class="row">
+      <div class="span4">
+        <h2>Insert</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="span4">
+        <ul class="nav nav-tabs">
+          <li class="active"><a href="#new_unit" data-toggle="tab">Unit</a></li>
+          <li><a href="#new_video" data-toggle="tab">Video</a></li>
+          <li><a href="#new_question" data-toggle="tab">Question</a></li>
+        </ul>
+        <!-- TABS -->
+        <div class="tab-content">
+          <div class="tab-pane active" id="new_unit">
+            <fieldset>
+              <label for"unit_title">Title</label>
+              <input id="unit_title" type="text" class="span4" placeholder="Unit title">
+            </fieldset>
+            <button class="btn btn-primary" style="margin-top: 10px;">Insert</button>
+          </div>
+          <div class="tab-pane" id="new_video">
+            <fieldset>
+              <label>Title</label>
+              <input type="text" class="span4" placeholder="Video title">
+            </fieldset>
+            <fieldset>
+              <label>URL</label>
+              <input type="text" class="span4" placeholder="Link to YouTube Video">
+            </fieldset>
+            <button class="btn btn-primary" style="margin-top: 10px;">Insert</button>
+          </div>
+          <div class="tab-pane" id="new_question">
+            <fieldset>
+              <label>Question</label>
+              <input type="text" class="span4" placeholder="Am I cool?">
+            </fieldset>
+            <fieldset>
+              <label>Answers</label>
+              <input type="text" class="span3" placeholder="Option 1">
+              <input type="radio" name="answers" id="answer0" value="0" checked="">
+              <input type="text" class="span3" placeholder="Option 2">
+              <input type="radio" name="answers" id="answer1" value="1" checked="checked">
+              <button id="add_another" class="btn span4" style="margin: 0px">Add Another!</button>
+            </fieldset>
+            <button class="btn btn-primary" style="margin-top: 10px;">Insert</button>
+          </div>
+        </div>
+
+        <!--
+        <button class="btn new_unit">
+          Unit
+        </button>
+        <button class="btn new_video">
+          Video
+        </button>
+        <button class="btn new_question">
+          Question
+        </button>
+      -->
+      </div>
+      <div class="span7">
+        <p>Does this work?</p>
+      </div>
+    </div>
+    <div class="form-actions">
+      <button type="submit" class="btn btn-primary">Save changes</button>
+      <button class="btn">Cancel</button>
+    </div>
+  </div>
+
+
+  <!-- MODALS -->
+  <div id="unit_options" class="modal hide fade" style="display: none;">
+    <div class="modal-header">
+      <a class="close" data-dismiss="modal">×</a>
+      <h3>Modal header</h3>
+    </div>
+    <div class="modal-body">
+      <p>One fine body…</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#" class="btn" data-dismiss="modal">Close</a>
+      <a href="#" class="btn btn-primary">Save changes</a>
+    </div>
+  </div>
+
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script type="text/javascript" src="js/bootstrap-transition.js"></script>
+  <script type="text/javascript" src="js/bootstrap-modal.js"></script>
+  <script type="text/javascript" src="js/bootstrap-tab.js"></script>
+  <script type="text/javascript" src="js/script.js"></script>
+</body>
+</html>
