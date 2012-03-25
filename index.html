@@ -36,12 +36,12 @@
         </p>
     </header>
     <div class="row">
-      <div class="span4">
+      <div class="span7">
         <h2>Insert</h2>
       </div>
     </div>
     <div class="row">
-      <div class="span4">
+      <div class="span7">
         <ul class="nav nav-tabs">
           <li class="active"><a href="#new_unit" data-toggle="tab">Unit</a></li>
           <li><a href="#new_video" data-toggle="tab">Video</a></li>
@@ -50,37 +50,40 @@
         <!-- TABS -->
         <div class="tab-content">
           <div class="tab-pane active" id="new_unit">
-            <fieldset>
-              <label for"unit_title">Title</label>
-              <input id="unit_title" type="text" class="span4" placeholder="Unit title">
-            </fieldset>
-            <button class="btn btn-primary" style="margin-top: 10px;">Insert</button>
+            <form id="new_unit_form" name="question" onsubmit="return false;">
+              <fieldset>
+                <label for="unit_title">Title</label>
+                <input type="text" id="unit_title" class="span7" name="title" placeholder="Unit title">
+              </fieldset>
+              <input type="submit" value="Insert" id="add_new_unit" class="btn btn-primary" style="margin-top: 10px;">
+            </form>
           </div>
+
           <div class="tab-pane" id="new_video">
-            <fieldset>
-              <label>Title</label>
-              <input type="text" class="span4" placeholder="Video title">
-            </fieldset>
-            <fieldset>
-              <label>URL</label>
-              <input type="text" class="span4" placeholder="Link to YouTube Video">
-            </fieldset>
-            <button class="btn btn-primary" style="margin-top: 10px;">Insert</button>
+            <form id="new_video_form" name="question" onsubmit="return false;">
+              <fieldset>
+                <label for="video_title">Title</label>
+                <input type="text" id="video_title" class="span7" name="title" placeholder="Video title">
+              </fieldset>
+              <fieldset>
+                <label for="video_url">URL</label>
+                <input type="text" id="video_url" class="span7" name="url" placeholder="Link to YouTube Video">
+              </fieldset>
+              <input type="submit" value="Insert" id="add_new_video" class="btn btn-primary" style="margin-top: 10px;">
+            </form>
           </div>
+
           <div class="tab-pane" id="new_question">
-            <fieldset>
-              <label>Question</label>
-              <input type="text" class="span4" placeholder="Am I cool?">
-            </fieldset>
-            <fieldset>
+            <form id="new_question_form" name="question" onsubmit="return false;">
+              <fieldset>
+                <label for="question_field">Question</label>
+                <input type="text" id="question_field" class="span7" name="question" placeholder="Am I cool?">
+              </fieldset>
               <label>Answers</label>
-              <input type="text" class="span3" placeholder="Option 1">
-              <input type="radio" name="answers" id="answer0" value="0" checked="">
-              <input type="text" class="span3" placeholder="Option 2">
-              <input type="radio" name="answers" id="answer1" value="1" checked="checked">
-              <button id="add_another" class="btn span4" style="margin: 0px">Add Another!</button>
-            </fieldset>
-            <button class="btn btn-primary" style="margin-top: 10px;">Insert</button>
+              <button id="add_answer" class="btn span5" style="margin: 0px 20px 0px 0px"><i class="icon-chevron-down"></i>Add Answer</button>
+              <button id="remove_answer" class="btn span2" style="margin: 0px"><i class="icon-chevron-up"></i>Remove Answer</button>
+              <input type="submit" value="Insert" id="add_new_question" class="btn btn-primary" style="margin-top: 10px;">
+            </form>
           </div>
         </div>
 
@@ -96,8 +99,9 @@
         </button>
       -->
       </div>
-      <div class="span7">
-        <p>Does this work?</p>
+      <div class="span4">
+        <div id="course_preview" class="well">
+        </div>
       </div>
     </div>
     <div class="form-actions">
@@ -106,25 +110,7 @@
     </div>
   </div>
 
-
-  <!-- MODALS -->
-  <div id="unit_options" class="modal hide fade" style="display: none;">
-    <div class="modal-header">
-      <a class="close" data-dismiss="modal">×</a>
-      <h3>Modal header</h3>
-    </div>
-    <div class="modal-body">
-      <p>One fine body…</p>
-    </div>
-    <div class="modal-footer">
-      <a href="#" class="btn" data-dismiss="modal">Close</a>
-      <a href="#" class="btn btn-primary">Save changes</a>
-    </div>
-  </div>
-
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-  <script type="text/javascript" src="js/bootstrap-transition.js"></script>
-  <script type="text/javascript" src="js/bootstrap-modal.js"></script>
   <script type="text/javascript" src="js/bootstrap-tab.js"></script>
   <script type="text/javascript" src="js/script.js"></script>
 </body>
