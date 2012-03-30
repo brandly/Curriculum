@@ -8,6 +8,30 @@ function parse_form(inputs) {
 }
 
 
+function draw_course(course) {
+  console.log('drawing');
+  var result = "<div id='class_display'><ul class='nav nav-list'>";
+  for(var u in course.units) {
+    var unit = course.units[u];
+    result += "<li><a href='#'><i class='icon-list-alt'></i> " + unit.title + "</a><ul class='nav nav-list'>";
+    for(var c in unit.children) {
+      var child = unit.children[c];
+      if(child.type === "question") {
+        result += "<li><a href='#'><i class='icon-question-sign'></i> " + child.question + "</a></li>";
+      } else if(child.type === "video") {
+        result += "<li><a href='#'><i class='icon-facetime-video'></i> " + child.title + "</a></li>";
+      }
+    }
+    result += "</ul></li>";
+  }
+  result += "</ul></div>";
+  // make way!
+  $('#class_display').remove();
+  // for the king?
+  console.log(result);
+  $('#course_layout').append(result);
+};
+
 (function (window, document, undefined) {
 
   var Course = function() {
@@ -47,27 +71,6 @@ function parse_form(inputs) {
       return question;
     };
 
-    this.draw_course = function() {
-      var result = "<div id='class_display'><ul class='nav nav-list'>";
-      for(var u in this.units) {
-        var unit = this.units[u];
-        result += "<li><a href='#'><i class='icon-list-alt'></i> " + unit.title + "</a><ul class='nav nav-list'>";
-        for(var c in unit.children) {
-          var child = unit.children[c];
-          if(child.type === "question") {
-            result += "<li><a href='#'><i class='icon-question-sign'></i> " + child.question + "</a></li>";
-          } else if(child.type === "video") {
-            result += "<li><a href='#'><i class='icon-facetime-video'></i> " + child.title + "</a></li>";
-          }
-        }
-        result += "</ul></li>";
-      }
-      result += "</ul></div>";
-      // make way!
-      $('#class_display').remove();
-      // for the king?
-      $('#course_layout').append(result);
-    };
 
     this.JSON = function() {
       return JSON.stringify(this);
@@ -95,7 +98,7 @@ function parse_form(inputs) {
     // cleanup
     $('#unit_title').attr('value', '');
 
-    app.course.draw_course();
+    draw_course(app.course);
   });
 
   $('#new_video_form').submit(function() {
@@ -109,7 +112,7 @@ function parse_form(inputs) {
       $('#video_title').attr('value', '');
       $('#video_url').attr('value', '');
 
-      app.course.draw_course();
+      draw_course(app.course);
     } else {
       alert("No unit to add video to");
     }
@@ -117,7 +120,7 @@ function parse_form(inputs) {
 
 
   $('#new_question_form').submit(function() {
-    if(Curriculum.active) {
+    if(app.active) {
       var inputs = $('#new_question_form :input');
       var values = parse_form(inputs);
       
@@ -129,14 +132,14 @@ function parse_form(inputs) {
         answers.push(values["answer" + i]);
       }
 
-      app.course.add_question(Curriculum.active, question, answers, correct);
+      app.course.add_question(app.active, question, answers, correct);
 
       // cleanup
       app.answer_count = 0;
       $('.answer').remove();
       $('#question_field').attr('value', '');
 
-      course.draw_course();
+      draw_course(app.course);
     } else {
       alert("No unit to add question to");
     }
